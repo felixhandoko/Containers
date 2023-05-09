@@ -1,6 +1,6 @@
 FROM openjdk:17-bullseye
 WORKDIR /app
-COPY ./build/libs/.jar app.jar
+COPY ./build/libs/.jar .
 COPY start.sh .
 RUN pip install --user --no-cache-dir -r start.sh
 RUN chmod 770 start.sh
