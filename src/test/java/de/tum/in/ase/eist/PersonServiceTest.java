@@ -63,8 +63,8 @@ class PersonServiceTest {
         parent.setLastName("Zuckermann");
         parent.setBirthday(LocalDate.of(1969, 5, 11));
 
-        personRepository.save(child);
-        personRepository.save(parent);
+        child = personRepository.save(child);
+        parent = personRepository.save(parent);
 
         personService.addParent(child, parent);
 
@@ -88,12 +88,19 @@ class PersonServiceTest {
         parent1.setLastName("Mustermann");
         parent1.setBirthday(LocalDate.of(1970,8,25));
 
-        parent2.setFirstName("Max");
-        parent2.setLastName("Mustermann");
+        parent2.setFirstName("Maximillian");
+        parent2.setLastName("Schmidt");
         parent2.setBirthday(LocalDate.of(1945,5,6));
 
-        parent3.setFirstName("Max");
-        parent3.setLastName("Mustermann");
-        parent3.setBirthday(LocalDate.now());
+        parent3.setFirstName("Ellis");
+        parent3.setLastName("Zuckermann");
+        parent3.setBirthday(LocalDate.of(1986,4,12));
+
+        personRepository.save(child);
+        personRepository.save(parent1);
+        personRepository.save(parent2);
+        personRepository.save(parent3);
+
+
     }
 }
