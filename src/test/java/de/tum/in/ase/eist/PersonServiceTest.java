@@ -53,18 +53,31 @@ class PersonServiceTest {
 
     @Test
     void testAddParent() {
-        var child=new Person();
-        var parent=new Person();
+        var child = new Person();
+        var parent = new Person();
         child.setFirstName("Max");
         child.setLastName("Mustermann");
         child.setBirthday(LocalDate.now());
 
         parent.setFirstName("Linda");
         parent.setLastName("Zuckermann");
-        parent.setBirthday(LocalDate.of(1969,5,11));
+        parent.setBirthday(LocalDate.of(1969, 5, 11));
 
-        personService.addParent(child,parent);
+        personRepository.save(child);
+        personRepository.save(parent);
+
+        personService.addParent(child, parent);
 
         assertTrue(child.getParents().contains(parent));
+    }
+
+    @Test
+    void testAddThreeParents() {
+        var child = new Person();
+        var parent1 = new Person();
+        var parent2=new Person();
+        var parent3= new Person();
+
+
     }
 }
