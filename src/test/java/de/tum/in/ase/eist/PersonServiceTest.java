@@ -66,10 +66,11 @@ class PersonServiceTest {
         child = personRepository.save(child);
         parent = personRepository.save(parent);
 
-        personService.addParent(child, parent);
-
         assertTrue(personRepository.existsById(parent.getId()));
         assertTrue(personRepository.existsById(child.getId()));
+
+        personService.addParent(child, parent);
+
         assertTrue(child.getParents().contains(parent));
     }
 
