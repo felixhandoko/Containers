@@ -50,8 +50,12 @@ public class PersonService {
     }
 
     public Person addChild(Person person, Person child) throws ResponseStatusException {
-        //if(child.getParents().size()<=1)
-        return null;
+        if (child.getParents().size() <= 1) {
+            person.getChildren().add(child);
+        } else {
+            throw new ResponseStatusException(HttpStatusCode.valueOf(400));
+        }
+        return personRepository.save(person);
     }
 
     public Person removeParent(Person person, Person parent) {
