@@ -68,6 +68,8 @@ class PersonServiceTest {
 
         personService.addParent(child, parent);
 
+        assertTrue(personRepository.existsById(parent.getId()));
+        assertTrue(personRepository.existsById(child.getId()));
         assertTrue(child.getParents().contains(parent));
     }
 
@@ -78,6 +80,20 @@ class PersonServiceTest {
         var parent2=new Person();
         var parent3= new Person();
 
+        child.setFirstName("Leon");
+        child.setLastName("Mustermann");
+        child.setBirthday(LocalDate.now());
 
+        parent1.setFirstName("Max");
+        parent1.setLastName("Mustermann");
+        parent1.setBirthday(LocalDate.of(1970,8,25));
+
+        parent2.setFirstName("Max");
+        parent2.setLastName("Mustermann");
+        parent2.setBirthday(LocalDate.of(1945,5,6));
+
+        person.setFirstName("Max");
+        person.setLastName("Mustermann");
+        person.setBirthday(LocalDate.now());
     }
 }
