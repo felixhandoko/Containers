@@ -51,5 +51,20 @@ class PersonServiceTest {
         assertTrue(personRepository.findAll().isEmpty());
     }
 
-    // TODO: Add more test cases here
+    @Test
+    void testAddParent() {
+        var child=new Person();
+        var parent=new Person();
+        child.setFirstName("Max");
+        child.setLastName("Mustermann");
+        child.setBirthday(LocalDate.now());
+
+        parent.setFirstName("Linda");
+        parent.setLastName("Zuckermann");
+        parent.setBirthday(LocalDate.of(1969,5,11));
+
+        personService.addParent(child,parent);
+
+        assertTrue(child.getParents().contains(parent));
+    }
 }
