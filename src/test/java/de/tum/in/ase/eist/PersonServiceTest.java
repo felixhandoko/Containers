@@ -71,6 +71,7 @@ class PersonServiceTest {
         personService.addParent(child, parent);
 
         assertTrue(child.getParents().contains(parent));
+        assertTrue(parent.getChildren().contains(child));
     }
 
     @Test
