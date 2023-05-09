@@ -59,12 +59,20 @@ public class PersonService {
     }
 
     public Person removeParent(Person person, Person parent) {
-        // TODO: Implement
-        return null;
+        if (person.getParents().size() > 1) {
+            person.getParents().remove(parent);
+        } else {
+            throw new ResponseStatusException(HttpStatusCode.valueOf(400));
+        }
+        return personRepository.save(person);
     }
 
     public Person removeChild(Person person, Person child) {
-        // TODO: Implement
-        return null;
+        if (child.getParents().size() > 1) {
+            person.getChildren().remove(child);
+        } else {
+            throw new ResponseStatusException(HttpStatusCode.valueOf(400));
+        }
+        return personRepository.save(person);
     }
 }
