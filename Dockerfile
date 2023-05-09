@@ -1,5 +1,9 @@
-# TODO: Add base image
-# TODO: Set workdir
+FROM openjdk:17-bullseye
+WORKDIR /app
+COPY ./build/libs app.jar
+COPY start.sh /app
+RUN chmod 770 start.sh
+CMD ./start.sh
 # TODO: Copy the compiled jar
 # TODO: Copy the start.sh script
 # TODO: Make start.sh executable
