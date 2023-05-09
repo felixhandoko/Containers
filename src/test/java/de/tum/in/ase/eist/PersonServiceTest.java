@@ -12,8 +12,7 @@ import org.springframework.test.annotation.DirtiesContext;
 
 import java.time.LocalDate;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 @AutoConfigureTestDatabase
@@ -78,8 +77,8 @@ class PersonServiceTest {
     void testAddThreeParents() {
         var child = new Person();
         var parent1 = new Person();
-        var parent2=new Person();
-        var parent3= new Person();
+        var parent2 = new Person();
+        var parent3 = new Person();
 
         child.setFirstName("Leon");
         child.setLastName("Mustermann");
@@ -87,15 +86,15 @@ class PersonServiceTest {
 
         parent1.setFirstName("Max");
         parent1.setLastName("Mustermann");
-        parent1.setBirthday(LocalDate.of(1970,8,25));
+        parent1.setBirthday(LocalDate.of(1970, 8, 25));
 
         parent2.setFirstName("Maximillian");
         parent2.setLastName("Schmidt");
-        parent2.setBirthday(LocalDate.of(1945,5,6));
+        parent2.setBirthday(LocalDate.of(1945, 5, 6));
 
         parent3.setFirstName("Ellis");
         parent3.setLastName("Zuckermann");
-        parent3.setBirthday(LocalDate.of(1986,4,12));
+        parent3.setBirthday(LocalDate.of(1986, 4, 12));
 
         personRepository.save(child);
         personRepository.save(parent1);
