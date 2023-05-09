@@ -2,9 +2,8 @@ FROM openjdk:17-bullseye
 WORKDIR /app
 COPY ./build/libs/H10E01-Containers-1.0.0.jar app.jar
 COPY start.sh .
-RUN pip install --user --no-cache-dir -r start.sh
 RUN chmod 770 start.sh
-CMD ./start.sh
+CMD ["./start.sh", "./app.jar"]
 # TODO: Copy the compiled jar
 # TODO: Copy the start.sh script
 # TODO: Make start.sh executable
