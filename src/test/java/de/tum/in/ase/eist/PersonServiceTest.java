@@ -70,6 +70,11 @@ class PersonServiceTest {
 
         personService.addParent(child, parent);
 
+
+        child = personRepository.findById(child.getId()).orElse(null);
+        parent = personRepository.findById(parent.getId()).orElse(null);
+        assertNotNull(child);
+        assertNotNull(parent);
         assertTrue(child.getParents().contains(parent));
         assertTrue(parent.getChildren().contains(child));
     }
