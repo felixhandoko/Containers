@@ -7,8 +7,10 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 
 import java.time.LocalDate;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Optional;
+import java.util.Set;
 
 @Service
 public class PersonService {
@@ -39,12 +41,12 @@ public class PersonService {
 
     public Person addParent(Person person, Person parent) throws ResponseStatusException {
         if (person.getParents().size() <= 1)
-            addParent(person, parent);
-        return save(person);
+            person.getParents().add(parent);
+        return personRepository.save(person);
     }
 
-    public Person addChild(Person person, Person child) {
-        // TODO: Implement
+    public Person addChild(Person person, Person child) throws ResponseStatusException {
+        //if(child.getParents().size()<=1)
         return null;
     }
 
