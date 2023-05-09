@@ -92,8 +92,8 @@ class PersonServiceTest {
         parent2.setLastName("Mustermann");
         parent2.setBirthday(LocalDate.of(1945,5,6));
 
-        person.setFirstName("Max");
-        person.setLastName("Mustermann");
-        person.setBirthday(LocalDate.now());
+        parent3.setFirstName("Max");
+        parent3.setLastName("Mustermann");
+        parent3.setBirthday(LocalDate.now());
     }
 }
