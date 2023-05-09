@@ -3,6 +3,7 @@ package de.tum.in.ase.eist.service;
 import de.tum.in.ase.eist.model.Person;
 import de.tum.in.ase.eist.repository.PersonRepository;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.HttpStatusCode;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 
@@ -40,8 +41,11 @@ public class PersonService {
     }
 
     public Person addParent(Person person, Person parent) throws ResponseStatusException {
-        if (person.getParents().size() <= 1)
+        if (person.getParents().size() <= 1) {
             person.getParents().add(parent);
+        } else {
+            throw new ResponseStatusException(HttpStatusCode.valueOf(400));
+        }
         return personRepository.save(person);
     }
 
