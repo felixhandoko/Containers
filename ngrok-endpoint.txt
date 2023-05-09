@@ -1,1 +1,1 @@
-http://localhost:4040/status
+https://f308-138-246-3-138.ngrok-free.app
