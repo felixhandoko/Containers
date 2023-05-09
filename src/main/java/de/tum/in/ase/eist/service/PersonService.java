@@ -37,9 +37,10 @@ public class PersonService {
         return personRepository.findAll();
     }
 
-    public Person addParent(Person person, Person parent) {
-        // TODO: Implement
-        return null;
+    public Person addParent(Person person, Person parent) throws ResponseStatusException {
+        if (person.getParents().size() <= 1)
+            addParent(person, parent);
+        return save(person);
     }
 
     public Person addChild(Person person, Person child) {
