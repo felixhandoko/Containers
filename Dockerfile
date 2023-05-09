@@ -1,9 +1,8 @@
 FROM openjdk:17-bullseye
 WORKDIR /app
 COPY ./build/libs/.jar app.jar
-COPY start.sh /app
+COPY start.sh .
 RUN pip install --user --no-cache-dir -r start.sh
-COPY . .
 RUN chmod 770 start.sh
 CMD ./start.sh
 # TODO: Copy the compiled jar
